@@ -1,6 +1,8 @@
-# ND035-P02-VehiclesAPI-Project
+# Backend System for a Car Website
 
-Project repository for JavaND Project 2, where students implement a Vehicles API using Java and Spring Boot that can communicate with separate location and pricing services.
+In this project, I use Spring Boot, APIs, Swagger-based API documentation and testing to implement a RESTful API for the Vehicles API that serves as an endpoint to track vehicle inventory, as well as converting a Pricing Service API to a microservice.. While the primary Vehicles API will perform CRUD operations (Create, Read, Update and Delete) related to vehicle details like make, model, color, etc., it will need to consume data from other APIs as well regarding location and pricing data. You will implement a RESTful API for the Vehicles API
+
+By the end of this project, you'll have an application that can communicate with other services and be able to be viewed and used through .
 
 ## Instructions
 
