@@ -34,7 +34,6 @@ public class PricingControllerTest {
                 .andExpect(jsonPath("$.currency").value("USD"))
                 .andExpect(jsonPath("$.price").exists())
                 .andExpect(jsonPath("$.vehicleId").value(1));
-
     }
 
 
