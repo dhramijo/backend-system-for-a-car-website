@@ -1,5 +1,7 @@
 package com.udacity.vehicles.domain.manufacturer;
 
+import lombok.Data;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
@@ -7,6 +9,7 @@ import javax.persistence.Id;
  * Declares class to hold car manufacturer information.
  */
 @Entity
+@Data
 public class Manufacturer {
 
     @Id
@@ -20,11 +23,4 @@ public class Manufacturer {
         this.name = name;
     }
 
-    public Integer getCode() {
-        return code;
-    }
-
-    public String getName() {
-        return name;
-    }
 }
