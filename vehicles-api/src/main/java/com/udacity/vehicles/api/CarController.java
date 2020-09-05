@@ -45,8 +45,11 @@ class CarController {
      */
     @GetMapping
     Resources<Resource<Car>> list() {
-        List<Resource<Car>> resources = carService.list().stream().map(assembler::toResource)
+        List<Resource<Car>> resources =
+                carService.list().stream()
+                .map(car -> assembler.toResource(car))
                 .collect(Collectors.toList());
+
         return new Resources<>(resources,
                 linkTo(methodOn(CarController.class).list()).withSelfRel());
     }
@@ -63,6 +66,7 @@ class CarController {
          * TODO: Use the `assembler` on that car and return the resulting output.
          *   Update the first line as part of the above implementing.
          */
+        Car newCar = carService.findById(id);
         return assembler.toResource(new Car());
     }
 
@@ -79,7 +83,8 @@ class CarController {
          * TODO: Use the `assembler` on that saved car and return as part of the response.
          *   Update the first line as part of the above implementing.
          */
-        Resource<Car> resource = assembler.toResource(new Car());
+        Car newCar = carService.save(car);
+        Resource<Car> resource = assembler.toResource(newCar);
         return ResponseEntity.created(new URI(resource.getId().expand().getHref())).body(resource);
     }
 
@@ -97,7 +102,9 @@ class CarController {
          * TODO: Use the `assembler` on that updated car and return as part of the response.
          *   Update the first line as part of the above implementing.
          */
-        Resource<Car> resource = assembler.toResource(new Car());
+        car.setId(id);
+        Car newCar = carService.save(car);
+        Resource<Car> resource = assembler.toResource(newCar);
         return ResponseEntity.ok(resource);
     }
 
@@ -111,6 +118,7 @@ class CarController {
         /**
          * TODO: Use the Car Service to delete the requested vehicle.
          */
+        carService.delete(id);
         return ResponseEntity.noContent().build();
     }
 }
