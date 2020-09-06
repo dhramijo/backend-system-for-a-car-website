@@ -56,6 +56,7 @@ public class CarControllerTest {
     @MockBean
     private MapsClient mapsClient;
 
+
     /**
      * Creates pre-requisites for testing, such as an example car.
      */
@@ -67,6 +68,7 @@ public class CarControllerTest {
         given(carService.findById(any())).willReturn(car);
         given(carService.list()).willReturn(Collections.singletonList(car));
     }
+
 
     /**
      * Tests for successful creation of new car in the system
@@ -82,6 +84,7 @@ public class CarControllerTest {
                         .accept(MediaType.APPLICATION_JSON_UTF8))
                 .andExpect(status().isCreated());
     }
+
 
     /**
      * Tests if the read operation appropriately returns a list of vehicles.
@@ -102,6 +105,7 @@ public class CarControllerTest {
         verify(carService, times(1)).list();
     }
 
+
     /**
      * Tests the read operation for a single car by ID.
      * @throws Exception if the read operation for a single car fails
@@ -119,6 +123,23 @@ public class CarControllerTest {
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8));
         verify(carService, times(1)).findById(1L);
     }
+
+
+    /**
+     * Tests the update of a single car by ID.
+     * @throws Exception if the update operation of a vehicle fails
+     */
+    @Test
+    public void updateCar() throws Exception {
+        Car car = getCar();
+        car.getDetails().setModel("Spark");
+        mvc.perform(put("/cars/1", car)
+                .content(json.write(car).getJson())
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk());
+    }
+
 
     /**
      * Tests the deletion of a single car by ID.
