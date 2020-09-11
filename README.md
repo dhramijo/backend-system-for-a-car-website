@@ -1,13 +1,12 @@
 # Backend System for a Car Website
 
-In this project, I use Spring Boot, APIs, Swagger-based API documentation and testing to implement a RESTful API for the Vehicles API that serves as an endpoint to track vehicle inventory, as well as converting a Pricing Service API to a microservice.. While the primary Vehicles API will perform CRUD operations (Create, Read, Update and Delete) related to vehicle details like make, model, color, etc., it will need to consume data from other APIs as well regarding location and pricing data. You will implement a RESTful API for the Vehicles API
+In this project, I use Spring Boot, APIs, Swagger-based API documentation and testing to implement a RESTful API for the Vehicles API that serves as an endpoint to track vehicle inventory, as well as converting a Pricing Service API to a microservice.. While the primary Vehicles API will perform CRUD operations (Create, Read, Update and Delete) related to vehicle details like make, model, color, etc., it will need to consume data from other APIs as well regarding location and pricing data. 
 
-By the end of this project, you'll have an application that can communicate with other services and be able to be viewed and used through .
 
 ## Instructions
 
 Check each component to see its details and instructions. Note that all three applications
-should be running at once for full operation. Further instructions are available in the classroom.
+should be running at once for full operation.
 
 - [Vehicles API](vehicles-api/README.md)
 - [Pricing Service](pricing-service/README.md)
